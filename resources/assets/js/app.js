@@ -13,8 +13,15 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('gif-list', require('./components/gif-list.vue'));
+Vue.component('gif', require('./components/gif.vue'));
 
 const app = new Vue({
-    el: '#app'
-});
+    el: '#app',
+    data: {
+
+    },
+    methods: {
+
+    }
+})
