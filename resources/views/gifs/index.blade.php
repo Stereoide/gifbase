@@ -14,9 +14,26 @@
         <link href="css/app.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div id="app">
+        <div id="app" class="container">
+            <nav class="nav">
+                <div class="nav-left">
+                    <div class="nav-item">GifBase</div>
+                </div>
+
+                <div class="nav-right">
+                    <span class="nav-item">
+                        <span class="button is-primary" @click="showUploadModal = true">
+                            <span>Upload</span>
+                        </span>
+                    </span>
+                </div>
+            </nav>
+
+            <upload-modal v-show="showUploadModal" @closeuploadmodal="showUploadModal = false"></upload-modal>
+
             <gif-list></gif-list>
         </div>
 
         <script src="js/app.js"></script>
+    </body>
 </html>
