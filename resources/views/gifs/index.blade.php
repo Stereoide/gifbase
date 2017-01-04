@@ -1,39 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.default')
 
-        <title>GifBase</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <link href="css/app.css" rel="stylesheet" type="text/css">
-    </head>
-    <body>
-        <div id="app" class="container">
-            <nav class="nav">
-                <div class="nav-left">
-                    <div class="nav-item">GifBase</div>
-                </div>
-
-                <div class="nav-right">
-                    <span class="nav-item">
-                        <span class="button is-primary" @click="showUploadModal = true">
-                            <span>Upload</span>
-                        </span>
-                    </span>
-                </div>
-            </nav>
-
-            <upload-modal v-show="showUploadModal" @closeuploadmodal="showUploadModal = false"></upload-modal>
-
-            <gif-list></gif-list>
+@section('content')
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-group">
+                <router-link to="/" class="list-group-item ">Home</router-link>
+                <router-link to="/foo" class="list-group-item ">Foo</router-link>
+                <router-link to="/bar" class="list-group-item ">Bar</router-link>
+                <router-link to="/rooms" class="list-group-item ">Rooms</router-link>
+            </div>
         </div>
 
-        <script src="js/app.js"></script>
-    </body>
-</html>
+        <router-view class="view"></router-view>
+    </div>
+@endsection

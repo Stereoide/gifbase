@@ -15,7 +15,7 @@
     export default {
         props: ['name'],
         mounted() {
-            console.log('upload-modal mounted.')
+
         }
     }
 </script>

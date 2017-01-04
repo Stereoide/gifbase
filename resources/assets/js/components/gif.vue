@@ -10,7 +10,7 @@
     export default {
         props: ['name'],
         mounted() {
-            console.log('gif mounted.')
+
         }
     }
 </script>

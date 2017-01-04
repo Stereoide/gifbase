@@ -18,7 +18,7 @@
             }
         },
         mounted() {
-            console.log("gif-list mounted");
+
             this.fetchData();
         }
     }
