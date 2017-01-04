@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('gifs.index');
-});
+Route::get('/', 'GifController@index');
+
+Route::resource('gif', 'GifController');
+
+Route::resource('categories', 'CategoryController');
