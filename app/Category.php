@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Gif extends Model
+class Category extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,7 @@ class Gif extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'filename', 'extension', 'category_id', 'hash', 'description', 'filesize',
+        'name',
     ];
 
     /**
@@ -24,12 +24,8 @@ class Gif extends Model
 
     ];
 
-    public function tags()
+    public function gifs()
     {
-        return $this->belongsToMany('App\Tag');
-    }
-
-    public function category() {
-        return $this->belongsTo('App\Category');
+        return $this->hasMany('App\Gif');
     }
 }
