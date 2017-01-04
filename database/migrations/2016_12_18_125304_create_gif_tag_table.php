@@ -26,6 +26,6 @@ class CreateGifTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('gif_tag');
     }
 }
