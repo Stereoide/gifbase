@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'GifController@index');
-
+Route::get('gif/{id}/download', 'GifController@download');
 Route::resource('gif', 'GifController');
 
 Route::resource('categories', 'CategoryController');

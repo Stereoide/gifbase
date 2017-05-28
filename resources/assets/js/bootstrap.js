@@ -25,6 +25,15 @@ require('vue-resource');
 
 require('dropzone');
 
+import Dropzone from 'dropzone'
+Dropzone.options.gifbaseUpload = {
+    paramName: "file", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    headers: {
+        'X-CSRF-TOKEN': document.querySelectorAll('meta[name=csrf-token]')[0].getAttributeNode('content').value,
+    }
+};
+
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
  * the outgoing requests issued by this application. The CSRF middleware

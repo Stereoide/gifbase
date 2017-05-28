@@ -25,4 +25,12 @@ class GifbaseServiceProvider extends ServiceProvider
     {
         //
     }
+
+    static public function getFileHash($path) {
+        if (!file_exists($path)) {
+            return false;
+        }
+
+        return sha1_file($path);
+    }
 }

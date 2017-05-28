@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Gif;
+use App\Providers\GifbaseServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class GifController extends Controller
 {
@@ -34,7 +38,28 @@ class GifController extends Controller
      */
     public function store(Request $request)
     {
-        die('upload');
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+
+            $filename = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+
+            /* Create model */
+
+            $gif = Gif::create([
+                'user_id' => 0,
+                'filename' => $filename,
+                'extension' => $extension,
+                'category_id' => 0,
+                'hash' => GifbaseServiceProvider::getFileHash($file->getPathname()),
+                'description' => '',
+                'filesize' => $file->getSize(),
+            ]);
+
+            /* Save file to disk */
+
+            Storage::disk('gifs')->putFileAs('', $file, $gif->id . '.' . $extension);
+        }
     }
 
     /**
@@ -80,5 +105,25 @@ class GifController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Download the thumbnail image/video file.
+     *
+     * @param int $id
+     */
+    public function download($id) {
+        /* Fetch gif in question */
+
+        $gif = Gif::findOrFail($id);
+
+        /* Prepare download headers */
+
+        $headers = [
+            'Content-Disposition: inline; filename="' . $gif->filename . '"'
+        ];
+
+        return response()->file(storage_path('gifs/' . $id . '.' . $gif->extension));
+        return response()->download(storage_path('gifs/' . $id . '.' . $gif->extension), $gif->filename);
     }
 }

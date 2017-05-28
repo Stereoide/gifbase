@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 'gifs',
 
     /*
     |--------------------------------------------------------------------------
@@ -42,6 +42,10 @@ return [
     */
 
     'disks' => [
+        'gifs' => [
+            'driver' => 'local',
+            'root' => storage_path('gifs'),
+        ],
 
         'local' => [
             'driver' => 'local',
